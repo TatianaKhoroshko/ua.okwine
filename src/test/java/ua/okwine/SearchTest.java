@@ -3,6 +3,7 @@ package ua.okwine;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
@@ -22,6 +23,8 @@ public class SearchTest {
         $(byXpath("//*[@id='__next']/div[3]/div/div/div/div/a[2]")).shouldHave(text(productName));
         $(byXpath("//*[@id='__next']/div[3]/div/div")).hover();
         $(byXpath("//*[@id='__next']/div[3]/div/div/div/div/div[3]/div/button")).click();
-
+        $("[href='/ua/cart']").click();
+        $$(byXpath("//*[@id='__next']/div[3]/div/div[1]/div[2]/ul")).shouldHave(size(1));
+        $(byXpath("//*[@id='__next']//ul//li//a")).shouldHave(text(productName));
     }
 }
