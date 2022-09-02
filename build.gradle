@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+group 'org.ua.okwine'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext{
+    junit5Ver = '5.9.0'
+}
+
+dependencies {
+    implementation ("com.codeborne:selenide:6.7.3")
+    testImplementation ("org.junit.jupiter:junit-jupiter-api:$junit5Ver")
+    testRuntimeOnly ("org.junit.jupiter:junit-jupiter-engine:$junit5Ver")
+}
+
+test {
+    useJUnitPlatform()
+}
